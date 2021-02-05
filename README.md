@@ -28,42 +28,21 @@ go build
 curl -X GET -H "Content-Type: application/json" http://localhost:8081/messages
 
 #Expect Output
-[{"timestamp":"1491345710.18","user":"superman","text":"hello"},{"timestamp":"1491345713.18","user":"batman","text":"hello"}]
+#[{"timestamp":"1491345710.18","user":"superman","text":"hello"},
+#{"timestamp":"1491345713.18","user":"batman","text":"hello"}]
 ```
-### Get Single Book
+### A request to post the given message
 ``` bash
-GET api/books/{id}
+curl -X POST -H "Content-Type: application/json" --data '{"user":"ironman", "text":"hello"}' http://localhost:8081/messages
+
+#Expect Output
+#{"ok":true}
 ```
 
-### Delete Book
+### A request to return a set of users that have posted messages so far.
 ``` bash
-DELETE api/books/{id}
-```
+curl -H "Content-Type: application/json" http://localhost:8081/users
 
-### Create Book
-``` bash
-POST api/books
-
-# Request sample
-# {
-#   "isbn":"4545454",
-#   "title":"Book Three",
-#   "author":{"firstname":"Harry",  "lastname":"White"}
-# }
-```
-
-### Update Book
-``` bash
-PUT api/books/{id}
-
-# Request sample
-# {
-#   "isbn":"4545454",
-#   "title":"Updated Title",
-#   "author":{"firstname":"Harry",  "lastname":"White"}
-# }
-
-```
-
-
+#Expect Output
+#["superman","batman"]
 ```
