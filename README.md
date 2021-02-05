@@ -81,14 +81,17 @@ go get -u github.com/gorilla/mux
 
 ``` bash
 go build
-./go_restapi
+./go-restful-api
 ```
 
 ## Endpoints
 
-### Get All Books
+### List 100 most recent messages
 ``` bash
-GET api/books
+curl -X GET -H "Content-Type: application/json" http://localhost:8081/messages
+
+#Expect Output
+[{"timestamp":"1491345710.18","user":"superman","text":"hello"},{"timestamp":"1491345713.18","user":"batman","text":"hello"}]
 ```
 ### Get Single Book
 ``` bash
